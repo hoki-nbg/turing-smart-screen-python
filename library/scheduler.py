@@ -185,6 +185,36 @@ def PingStats():
     stats.Ping.stats()
 
 
+@async_job("BlueBatt_Voltage")
+@schedule(timedelta(seconds=config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('VOLTAGE', {}).get("INTERVAL", 0)).total_seconds())
+def BlueBattVoltage():
+    stats.BlueBatt.Voltage()
+
+
+@async_job("BlueBatt_PercentCapacity")
+@schedule(timedelta(seconds=config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('PERCENT_CAPACITY', {}).get("INTERVAL", 0)).total_seconds())
+def BlueBattPercentCapacity():
+    stats.BlueBatt.PercentCapacity()
+
+
+@async_job("BlueBatt_Current")
+@schedule(timedelta(seconds=config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('CURRENT', {}).get("INTERVAL", 0)).total_seconds())
+def BlueBattCurrent():
+    stats.BlueBatt.Current()
+
+
+@async_job("BlueBatt_Wattage")
+@schedule(timedelta(seconds=config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('WATTAGE', {}).get("INTERVAL", 0)).total_seconds())
+def BlueBattWattage():
+    stats.BlueBatt.Wattage()
+
+
+@async_job("BlueBatt_Timestamp")
+@schedule(timedelta(seconds=config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('TIMESTAMP', {}).get("INTERVAL", 0)).total_seconds())
+def BlueBattTimestamp():
+    stats.BlueBatt.timestamp()
+
+
 @async_job("Queue_Handler")
 @schedule(timedelta(milliseconds=1).total_seconds())
 def QueueHandler():

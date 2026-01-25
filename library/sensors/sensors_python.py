@@ -24,6 +24,8 @@
 import math
 import platform
 import sys
+import json
+import os
 from collections import namedtuple
 from enum import IntEnum, auto
 from typing import Tuple
@@ -505,3 +507,38 @@ class Net(sensors.Net):
             return upload_rate, uploaded, download_rate, downloaded
         except:
             return -1, -1, -1, -1
+
+
+class BlueBatt(sensors.BlueBatt):
+    @staticmethod
+    def _read_data():
+        try:
+            with open('/home/x/programme/jbdtool/bms_log.json', 'r') as f:
+                lines = f.readlines()
+                if lines:
+                    return json.loads(lines[-1])
+                return {}
+        except Exception as e:
+            logger.error(f"Error reading BlueBatt data: {e}")
+            return {}
+
+    @staticmethod
+    def Voltage() -> float:
+        data = BlueBatt._read_data()
+        return data.get('Voltage', 0)
+
+    @staticmethod
+    def PercentCapacity() -> float:
+        data = BlueBatt._read_data()
+        return data.get('PercentCapacity', 0)
+
+    @staticmethod
+    def Current() -> float:
+        data = BlueBatt._read_data()
+        return data.get('Current', 0)
+
+    @staticmethod
+    def timestamp() -> str:
+        data = BlueBatt._read_data()
+        return data.get('Timestamp', "")
+

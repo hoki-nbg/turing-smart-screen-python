@@ -13,30 +13,30 @@ static_images:
     WIDTH: 320
     HEIGHT: 480
 static_text:
-  DISK_USED_LABEL:
-    TEXT: "Used:"
-    X: 124
-    Y: 411
-    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
-    FONT_SIZE: 23
-    FONT_COLOR: 255, 255, 255
-    BACKGROUND_COLOR: 132, 154, 165
-  DISK_FREE_LABEL:
-    TEXT: "Free:"
-    X: 124
-    Y: 441
-    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
-    FONT_SIZE: 23
-    FONT_COLOR: 255, 255, 255
-    BACKGROUND_COLOR: 132, 154, 165
-  DISK_TOTAL_LABEL:
-    TEXT: "Total:"
-    X: 124
-    Y: 381
-    FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
-    FONT_SIZE: 23
-    FONT_COLOR: 255, 255, 255
-    BACKGROUND_COLOR: 132, 154, 165
+  # DISK_USED_LABEL:
+  #   TEXT: "Used:"
+  #   X: 124
+  #   Y: 411
+  #   FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+  #   FONT_SIZE: 23
+  #   FONT_COLOR: 255, 255, 255
+  #   BACKGROUND_COLOR: 132, 154, 165
+  # DISK_FREE_LABEL:
+  #   TEXT: "Free:"
+  #   X: 124
+  #   Y: 441
+  #   FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+  #   FONT_SIZE: 23
+  #   FONT_COLOR: 255, 255, 255
+  #   BACKGROUND_COLOR: 132, 154, 165
+  # DISK_TOTAL_LABEL:
+  #   TEXT: "Total:"
+  #   X: 124
+  #   Y: 381
+  #   FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+  #   FONT_SIZE: 23
+  #   FONT_COLOR: 255, 255, 255
+  #   BACKGROUND_COLOR: 132, 154, 165
 STATS:
   CPU:
     PERCENTAGE:
@@ -84,7 +84,7 @@ STATS:
         FONT_COLOR: 255, 255, 255
         BACKGROUND_COLOR: 132, 154, 165
   GPU:
-    INTERVAL: 1
+    INTERVAL: 2
     PERCENTAGE:
       GRAPH:
         SHOW: True
@@ -111,6 +111,16 @@ STATS:
         SHOW: TRUE
         SHOW_UNIT: True
         X: 204
+        Y: 201
+        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+        FONT_SIZE: 23
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_COLOR: 132, 154, 165
+    FREQUENCY:
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: False
+        X: 154
         Y: 201
         FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
         FONT_SIZE: 23
@@ -158,49 +168,49 @@ STATS:
         FONT_SIZE: 23
         FONT_COLOR: 255, 255, 255
         BACKGROUND_COLOR: 132, 154, 165
-  DISK:
-    INTERVAL: 10
-    USED:
-      GRAPH:
-        SHOW: True
-        X: 155
-        Y: 345
-        WIDTH: 150
-        HEIGHT: 15
-        MIN_VALUE: 0
-        MAX_VALUE: 100
-        BAR_COLOR: 0, 0, 255
-        BAR_OUTLINE: False
-        BACKGROUND_COLOR: 0, 0, 0
-      TEXT:
-        SHOW: TRUE
-        SHOW_UNIT: True
-        X: 204
-        Y: 411
-        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
-        FONT_SIZE: 23
-        FONT_COLOR: 255, 255, 255
-        BACKGROUND_COLOR: 132, 154, 165
-    TOTAL:
-      TEXT:
-        SHOW: TRUE
-        SHOW_UNIT: True
-        X: 204
-        Y: 381
-        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
-        FONT_SIZE: 23
-        FONT_COLOR: 255, 255, 255
-        BACKGROUND_COLOR: 132, 154, 165
-    FREE:
-      TEXT:
-        SHOW: TRUE
-        SHOW_UNIT: True
-        X: 204
-        Y: 441
-        FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
-        FONT_SIZE: 23
-        FONT_COLOR: 255, 255, 255
-        BACKGROUND_COLOR: 132, 154, 165
+  # DISK:
+  #   INTERVAL: 10
+  #   USED:
+  #     GRAPH:
+  #       SHOW: True
+  #       X: 155
+  #       Y: 345
+  #       WIDTH: 150
+  #       HEIGHT: 15
+  #       MIN_VALUE: 0
+  #       MAX_VALUE: 100
+  #       BAR_COLOR: 0, 0, 255
+  #       BAR_OUTLINE: False
+  #       BACKGROUND_COLOR: 0, 0, 0
+  #     TEXT:
+  #       SHOW: TRUE
+  #       SHOW_UNIT: True
+  #       X: 204
+  #       Y: 411
+  #       FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+  #       FONT_SIZE: 23
+  #       FONT_COLOR: 255, 255, 255
+  #       BACKGROUND_COLOR: 132, 154, 165
+  #   TOTAL:
+  #     TEXT:
+  #       SHOW: TRUE
+  #       SHOW_UNIT: True
+  #       X: 204
+  #       Y: 381
+  #       FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+  #       FONT_SIZE: 23
+  #       FONT_COLOR: 255, 255, 255
+  #       BACKGROUND_COLOR: 132, 154, 165
+  #   FREE:
+  #     TEXT:
+  #       SHOW: TRUE
+  #       SHOW_UNIT: True
+  #       X: 204
+  #       Y: 441
+  #       FONT: jetbrains-mono/JetBrainsMono-Bold.ttf
+  #       FONT_SIZE: 23
+  #       FONT_COLOR: 255, 255, 255
+  #       BACKGROUND_COLOR: 132, 154, 165
 
   DATE:
     INTERVAL: 1
@@ -226,3 +236,81 @@ STATS:
         BACKGROUND_IMAGE: background.png
         WIDTH: 64
         ANCHOR: lm
+  NET:
+    INTERVAL: 1
+    ETH:
+      DOWNLOAD:
+        TEXT:
+          SHOW: True
+          X: 128
+          Y: 330
+          FONT: generale-mono/GeneraleMonoA.ttf
+          FONT_SIZE: 15
+          FONT_COLOR: 255, 255, 255
+          BACKGROUND_IMAGE: background.png
+      UPLOAD:
+        TEXT:
+          SHOW: True
+          X: 128
+          Y: 350
+          FONT: generale-mono/GeneraleMonoA.ttf
+          FONT_SIZE: 15
+          FONT_COLOR: 255, 255, 255
+          BACKGROUND_IMAGE: background.png
+  BLUEBATT:
+
+    PERCENT_CAPACITY:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        X: 10
+        Y: 380
+        FONT: generale-mono/GeneraleMonoA.ttf
+        FONT_SIZE: 30
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+  
+    WATTAGE:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        X: 140
+        Y: 380
+        FONT: generale-mono/GeneraleMonoA.ttf
+        FONT_SIZE: 30
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+
+
+
+    VOLTAGE:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        X: 128
+        Y: 410
+        FONT: generale-mono/GeneraleMonoA.ttf
+        FONT_SIZE: 15
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+
+    CURRENT:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        X: 128
+        Y: 430
+        FONT: generale-mono/GeneraleMonoA.ttf
+        FONT_SIZE: 15
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    TIMESTAMP:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        X: 128
+        Y: 450
+        FONT: generale-mono/GeneraleMonoA.ttf
+        FONT_SIZE: 15
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png

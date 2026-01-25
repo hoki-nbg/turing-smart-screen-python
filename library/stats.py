@@ -943,3 +943,77 @@ class Ping:
             min_size=6
         )
         display_themed_line_graph(theme_data['LINE_GRAPH'], cls.last_values_ping)
+
+
+class BlueBatt:
+    last_values_voltage = []
+    last_values_percent_capacity = []
+    last_values_current = []
+    last_values_wattage = []
+
+    @classmethod
+    def Voltage(cls):
+        theme_data = config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('VOLTAGE', {})
+        if not theme_data: return
+
+        voltage = sensors.BlueBatt.Voltage()
+        save_last_value(voltage, cls.last_values_voltage,
+                        theme_data.get('LINE_GRAPH', {}).get("HISTORY_SIZE", DEFAULT_HISTORY_SIZE))
+
+        display_themed_value(theme_data=theme_data.get('TEXT', {}), value=f'{voltage:.2f}', unit="V")
+        display_themed_progress_bar(theme_data.get('GRAPH', {}), voltage)
+        display_themed_radial_bar(theme_data.get('RADIAL', {}), value=voltage, unit="V")
+        display_themed_line_graph(theme_data.get('LINE_GRAPH', {}), cls.last_values_voltage)
+
+    @classmethod
+    def PercentCapacity(cls):
+        theme_data = config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('PERCENT_CAPACITY', {})
+        if not theme_data: return
+
+        percent = sensors.BlueBatt.PercentCapacity()
+        save_last_value(percent, cls.last_values_percent_capacity,
+                        theme_data.get('LINE_GRAPH', {}).get("HISTORY_SIZE", DEFAULT_HISTORY_SIZE))
+
+        display_themed_percent_value(theme_data.get('TEXT', {}), percent)
+        display_themed_progress_bar(theme_data.get('GRAPH', {}), percent)
+        display_themed_percent_radial_bar(theme_data.get('RADIAL', {}), percent)
+        display_themed_line_graph(theme_data.get('LINE_GRAPH', {}), cls.last_values_percent_capacity)
+
+    @classmethod
+    def Current(cls):
+        theme_data = config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('CURRENT', {})
+        if not theme_data: return
+
+        current = sensors.BlueBatt.Current()
+        save_last_value(current, cls.last_values_current,
+                        theme_data.get('LINE_GRAPH', {}).get("HISTORY_SIZE", DEFAULT_HISTORY_SIZE))
+
+        display_themed_value(theme_data=theme_data.get('TEXT', {}), value=f'{current:.2f}', unit="A")
+        display_themed_progress_bar(theme_data.get('GRAPH', {}), current)
+        display_themed_radial_bar(theme_data.get('RADIAL', {}), value=current, unit="A")
+        display_themed_line_graph(theme_data.get('LINE_GRAPH', {}), cls.last_values_current)
+
+    @classmethod
+    def Wattage(cls):
+        theme_data = config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('WATTAGE', {})
+        if not theme_data: return
+
+        voltage = sensors.BlueBatt.Voltage()
+        current = sensors.BlueBatt.Current()
+        wattage = voltage * current
+
+        save_last_value(wattage, cls.last_values_wattage,
+                        theme_data.get('LINE_GRAPH', {}).get("HISTORY_SIZE", DEFAULT_HISTORY_SIZE))
+
+        display_themed_value(theme_data=theme_data.get('TEXT', {}), value=f'{wattage:.2f}', unit="W")
+        display_themed_progress_bar(theme_data.get('GRAPH', {}), wattage)
+        display_themed_radial_bar(theme_data.get('RADIAL', {}), value=wattage, unit="W")
+        display_themed_line_graph(theme_data.get('LINE_GRAPH', {}), cls.last_values_wattage)
+
+    @classmethod
+    def timestamp(cls):
+        theme_data = config.THEME_DATA['STATS'].get('BLUEBATT', {}).get('TIMESTAMP', {})
+        if not theme_data: return
+
+        timestamp = sensors.BlueBatt.timestamp()
+        display_themed_value(theme_data=theme_data.get('TEXT', {}), value=timestamp)

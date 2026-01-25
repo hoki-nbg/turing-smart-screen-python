@@ -125,3 +125,25 @@ class Net(ABC):
     def stats(if_name, interval) -> Tuple[
         int, int, int, int]:  # up rate (B/s), uploaded (B), dl rate (B/s), downloaded (B)
         pass
+
+
+class BlueBatt(ABC):
+    @staticmethod
+    @abstractmethod
+    def Voltage() -> float:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def PercentCapacity() -> float:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def Current() -> float:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def timestamp() -> str:
+        pass

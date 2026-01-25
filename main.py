@@ -230,6 +230,11 @@ if __name__ == "__main__":
     scheduler.CustomStats(); time.sleep(0.25)
     scheduler.WeatherStats(); time.sleep(0.25)
     scheduler.PingStats(); time.sleep(0.25)
+    scheduler.BlueBattVoltage(); time.sleep(0.25)
+    scheduler.BlueBattPercentCapacity(); time.sleep(0.25)
+    scheduler.BlueBattCurrent(); time.sleep(0.25)
+    scheduler.BlueBattWattage(); time.sleep(0.25)
+    scheduler.BlueBattTimestamp(); time.sleep(0.25)
 
     # OS-specific tasks
     if tray_icon and platform.system() == "Darwin":  # macOS-specific
