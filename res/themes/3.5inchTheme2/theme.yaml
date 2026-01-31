@@ -242,6 +242,7 @@ STATS:
       DOWNLOAD:
         TEXT:
           SHOW: True
+          UNIT_TYPE: "Mbit/s"
           X: 128
           Y: 330
           FONT: generale-mono/GeneraleMonoA.ttf
@@ -251,6 +252,7 @@ STATS:
       UPLOAD:
         TEXT:
           SHOW: True
+          UNIT_TYPE: "Mbit/s"
           X: 128
           Y: 350
           FONT: generale-mono/GeneraleMonoA.ttf

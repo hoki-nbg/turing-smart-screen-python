@@ -728,9 +728,14 @@ class Net:
 
     @staticmethod
     def _show_themed_tax_rate(theme_data, rate):
+        if theme_data.get("UNIT_TYPE") == "Mbit/s":
+            value_str = f"{(rate * 8) / 1000000:.1f} Mbit/s"
+        else:
+            value_str = f"{bytes2human(rate, '%(value).1f %(symbol)s/s')}"
+
         display_themed_value(
             theme_data=theme_data,
-            value=f"{bytes2human(rate, '%(value).1f %(symbol)s/s')}",
+            value=value_str,
             min_size=10
         )
 
